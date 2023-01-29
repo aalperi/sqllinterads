@@ -1,7 +1,7 @@
 {
-	"name": "sql-linter-ads",
-	"displayName": "SQL Linter ADS",
-	"description": "SQL prettier for Azure data studio",
+	"name": "poor-sql-formatter-2",
+	"displayName": "Poor SQL Formatter 2",
+	"description": "T-SQL Formatter & Beautifier",
 	"publisher": "aalperi",
 	"version": "0.0.1",
 	"engines": {
@@ -12,13 +12,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onLanguage:sql-lang"
+		"onLanguage:sql",
+		"onCommand:poorSql2.format"
 	],
-	"main": "./out/extension.js",
+	"main": "./out/extension",
 	"contributes": {
 		"languages": [
 			{
-				"id": "sql-lang",
+				"id": "sql",
 				"aliases": [
 					"SQL"
 				],
@@ -26,7 +27,114 @@
 					".sql"
 				]
 			}
-		]
+		],
+		"commands": [
+			{
+				"command": "poorSql2.format",
+				"title": "Poor SQL 2: Format T-SQL"
+			}
+		],
+        "configuration": {
+            "type": "object",
+            "title": "Poor SQL 2 configuration",
+            "properties": {
+                "poorSql2.tabIndent": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use tabs for indentation?"
+                },
+                "poorSql2.numIndentSpaces": {
+                    "type": "integer",
+                    "default": 4,
+                    "description": "Number of spaces to use when indenting. Ignored if tabIndent is true."
+                },
+                "poorSql2.maxLineWidth": {
+                    "type": "integer",
+                    "default": 999,
+                    "description": "Max characters per line."
+                },
+                "poorSql2.statementBreaks": {
+                    "type": "integer",
+                    "default": 2,
+                    "description": "Number of line breaks between statements."
+                },
+                "poorSql2.clauseBreaks": {
+                    "type": "integer",
+                    "default": 1,
+                    "description": "Number of line breaks between clauses within a statement."
+                },
+                "poorSql2.expandCommaLists": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Expand comma-delimited lists onto new lines?"
+                },
+                "poorSql2.trailingCommas": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Should commas be at the end of lines?"
+                },
+                "poorSql2.spaceAfterExpandedComma": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Should a space be added after commas?"
+                },
+                "poorSql2.expandBooleanExpressions": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Should boolean operators cause a linebreak?"
+                },
+                "poorSql2.expandCaseStatements": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Should WHEN and THEN expressions in a CASE statement cause a linebreak?"
+                },
+                "poorSql2.expandBetweenConditions": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Should arguments of BETWEEN expressions cause linebreaks?"
+                },
+                "poorSql2.expandInLists": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Should IN lists be split by linebreaks?"
+                },
+                "poorSql2.breakJoinOnSections": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Should the ON section of a JOIN clause cause a linebreak?"
+                },
+                "poorSql2.uppercaseKeywords": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Should keywords be automatically uppercased?"
+                },
+                "poorSql2.keywordStandardization": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Should less-common keywords be replaced with common alternatives? (Caution: only safe for T-SQL)"
+                },
+                "poorSql2.obfuscate.randomizeKeywordCase": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Obfuscation: should the case of keywords be randomized?"
+                },
+                "poorSql2.obfuscate.randomizeLineLengths": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Obfuscation: should line lengths be randomized?"
+                },
+                "poorSql2.obfuscate.preserveComments": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Obfuscation: should comments be preserved?"
+                },
+                "poorSql2.obfuscate.enableKeywordSubstitution": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Obfuscation: allow common keywords to be replaced with less common alternatives? (Caution: only safe for T-SQL)"
+                }
+            }
+        }
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -35,7 +143,8 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
 		"test": "node ./out/test/runTest.js",
-		"proposedapi": "node installTypings.js"
+		"proposedapi": "node installTypings.js",
+        "postinstall": "node ./node_modules/vscode/bin/install && tsc"
 	},
 	"devDependencies": {
 		"@types/azdata": "*",
@@ -50,5 +159,8 @@
 		"glob": "^7.1.7",
 		"mocha": "^9.1.0",
 		"typescript": "^4.3.5"
+	},
+	"dependencies": {
+		"poor-mans-t-sql-formatter": "^1.6.10"
 	}
 }
