@@ -2,8 +2,13 @@
 	"name": "poor-sql-formatter-2",
 	"displayName": "Poor SQL Formatter 2",
 	"description": "T-SQL Formatter & Beautifier",
-	"publisher": "aalperi",
-	"version": "0.0.1",
+	"publisher": "HeidiAhlberg",
+	"version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npm/cli.git"
+    },
+    "icon": "images/icon.png",
 	"engines": {
 		"vscode": "^1.39.0",
 		"azdata": "*"

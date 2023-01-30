@@ -4,7 +4,6 @@ import { formatSql } from 'poor-mans-t-sql-formatter';
 
 export const activate = (context: vscode.ExtensionContext) => {
 
-    console.log('Congratulations, your extension "sql-linter-ads" is now active!');
     const formatDisposable = vscode.commands.registerTextEditorCommand('poorSql2.format', function (activeEditor, activeEditorEdit) {
         formatWithOptions(activeEditor, activeEditorEdit, getFormatterOptions());
     });
@@ -74,6 +73,7 @@ const getFormatterOptions = (isObfuscate = false):vscode.FormattingOptions => {
     }
     return newOptions as unknown as vscode.FormattingOptions;
 };
+
 const getRangeForDocument = (document: vscode.TextDocument) => {
     const lastLine = document.lineCount - 1;
     const lastLineObj = document.lineAt(lastLine);
@@ -84,16 +84,4 @@ const getRangeForDocument = (document: vscode.TextDocument) => {
     const end = { character: lastChar, line: lastLine };
 
     return new vscode.Range(start.line, start.character, end.line, end.character);
-};
-const formatDocument = (document: vscode.TextDocument) => {
-    try{
-        const lastLine = document.lineCount - 1;
-        const lastLineObj = document.lineAt(lastLine);
-        const lastChar = lastLineObj.range.end.character;
-        const range = new vscode.Range(0, 0, lastLine, lastChar);
-        console.log('formatDocument');
-        return [vscode.TextEdit.replace(range,formatSql(document.getText(), getFormatterOptions()))];
-    } catch (e){
-        throw new Error('Jotain meni pieleen');
-    }
 };
