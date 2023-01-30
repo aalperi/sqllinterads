@@ -148,8 +148,7 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
 		"test": "node ./out/test/runTest.js",
-		"proposedapi": "node installTypings.js",
-        "postinstall": "node ./node_modules/vscode/bin/install && tsc"
+		"proposedapi": "node installTypings.js"
 	},
 	"devDependencies": {
 		"@types/azdata": "*",

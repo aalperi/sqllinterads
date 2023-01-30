@@ -30,10 +30,16 @@ Extension is published as VSIX instead of marketplace.
 
 ## Getting started
 
-Download zip -file from this repocitory, unzip it and install it as VSIX.
+1. clone repository
+2. <code>npm install</code>
+3. <code>npm install -g @vscode/vsce</code>
+4. <code>vsce package</code>
+5. Install generated VSIX file manually.
 
 Azure Data Studio: File - Install Extension from VSIX Package.
 Visual Studio Code: Extensions - ... (Views and more action) - Install from VSIX.
+
+6. Profit
 
 ## Release Notes
 
