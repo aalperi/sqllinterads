@@ -2,7 +2,9 @@
 
 Inspired by [azure-poor-formatter](https://github.com/wsr-publishing/azure-poor-formatter) made version 2 for onSave support.
 
-This also uses (as the azure-poor-formatter) the [Poor Man's T-SQL Formatter](https://github.com/TaoK/PoorMansTSqlFormatter) to format your T-SQL inside Azure Data Studio.
+This also uses the [Poor Man's T-SQL Formatter](https://github.com/TaoK/PoorMansTSqlFormatter) to format your T-SQL inside Azure Data Studio or Visual Studio Code.
+
+Extension is published as VSIX instead of marketplace.
 
 ## Extension Settings
 
@@ -28,10 +30,16 @@ This also uses (as the azure-poor-formatter) the [Poor Man's T-SQL Formatter](ht
 
 ## Getting started
 
-Download VSIX -file from this repocitory and upload it to Azure Data Studio.
+Download zip -file from this repocitory, unzip it and install it as VSIX.
+
+Azure Data Studio: File - Install Extension from VSIX Package.
+Visual Studio Code: Extensions - ... (Views and more action) - Install from VSIX.
 
 ## Release Notes
 
-### 0.1.0
+### 1.0.0
 
-Initial release.
+First release.
+
+- Format t-sql according to configuration
+- Choose formatter as defaul formatter and format on save

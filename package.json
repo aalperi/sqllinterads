@@ -2,8 +2,8 @@
 	"name": "poor-sql-formatter-2",
 	"displayName": "Poor SQL Formatter 2",
 	"description": "T-SQL Formatter & Beautifier",
-	"publisher": "HeidiAhlberg",
-	"version": "0.1.0",
+	"publisher": "Heidi Ahlberg",
+	"version": "1.0.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/npm/cli.git"
@@ -45,7 +45,7 @@
             "properties": {
                 "poorSql2.tabIndent": {
                     "type": "boolean",
-                    "default": false,
+                    "default": true,
                     "description": "Use tabs for indentation?"
                 },
                 "poorSql2.numIndentSpaces": {
@@ -55,12 +55,12 @@
                 },
                 "poorSql2.maxLineWidth": {
                     "type": "integer",
-                    "default": 999,
+                    "default": 250,
                     "description": "Max characters per line."
                 },
                 "poorSql2.statementBreaks": {
                     "type": "integer",
-                    "default": 2,
+                    "default": 1,
                     "description": "Number of line breaks between statements."
                 },
                 "poorSql2.clauseBreaks": {
@@ -70,7 +70,7 @@
                 },
                 "poorSql2.expandCommaLists": {
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "Expand comma-delimited lists onto new lines?"
                 },
                 "poorSql2.trailingCommas": {
@@ -85,7 +85,7 @@
                 },
                 "poorSql2.expandBooleanExpressions": {
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "Should boolean operators cause a linebreak?"
                 },
                 "poorSql2.expandCaseStatements": {
@@ -105,12 +105,12 @@
                 },
                 "poorSql2.breakJoinOnSections": {
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "Should the ON section of a JOIN clause cause a linebreak?"
                 },
                 "poorSql2.uppercaseKeywords": {
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "Should keywords be automatically uppercased?"
                 },
                 "poorSql2.keywordStandardization": {
